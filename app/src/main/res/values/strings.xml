@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ApplicationTracker</string>
+    <string name="job_name">Job Name</string>
+    <string name="company_name">Company Name</string>
+    <string name="ok">Okay</string>
+    <string name="cancel">Cancel</string>
+</resources>
