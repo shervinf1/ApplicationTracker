@@ -5,4 +5,6 @@
     <string name="ok">Okay</string>
     <string name="cancel">Cancel</string>
     <string name="Description">Description</string>
+    <string name="view_selected_application">View Selected Application</string>
+    <string name="application_tracker">Application Tracker</string>
 </resources>

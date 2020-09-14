@@ -96,6 +96,13 @@ public class MainActivity extends AppCompatActivity {
                 String path = documentSnapshot.getReference().getPath();
                 Toast.makeText(MainActivity.this,
                         "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+                Intent viewSelectedApplicationIntent = new Intent(MainActivity.this, ViewSelectedApplication.class);
+                assert applicationPOJO != null;
+                viewSelectedApplicationIntent.putExtra("companyName", applicationPOJO.getCompanyName());
+                viewSelectedApplicationIntent.putExtra("jobName", applicationPOJO.getJobName());
+                viewSelectedApplicationIntent.putExtra("description", applicationPOJO.getDescription());
+                finish();
+                startActivity(viewSelectedApplicationIntent);
             }
         });
     }
