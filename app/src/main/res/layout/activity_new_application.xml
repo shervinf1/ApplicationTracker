@@ -1,33 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLight"
     android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".NewApplicationActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/newApplicationToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:padding="0dp"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="6dp"
+            android:text="@string/add_new_application"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <TextView
+        android:id="@+id/textView"
+        style="?android:textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="124dp"
+        android:padding="14dp"
+        android:text="@string/add_new_application"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newApplicationToolbar" />
 
     <EditText
         android:id="@+id/edit_text_company_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:alpha="0.75"
+        android:textColorHint="@color/colorPrimaryLight"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="@drawable/login_input_field"
         android:hint="@string/company_name"
-        android:inputType="text" />
+        android:inputType="text"
+        android:padding="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/edit_text_job_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/job_name"
-        android:inputType="textMultiLine" />
+        android:padding="14dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="textMultiLine"
+        android:alpha="0.75"
+        android:textColorHint="@color/colorPrimaryLight"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="@drawable/login_input_field"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_company_name" />
 
     <EditText
         android:id="@+id/edit_text_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/login_input_field"
+        android:padding="14dp"
         android:hint="@string/Description"
-        android:inputType="textMultiLine" />
+        android:alpha="0.75"
+        android:layout_marginStart="16dp"
+        android:textColorHint="@color/colorPrimaryLight"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_job_name" />
+
+    <Button
+        android:id="@+id/registerBtn"
+        style="?android:textAppearanceLarge"
+        android:layout_width="160dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/login_button_input_field"
+        android:onClick="AddApplication"
+        android:text="@string/add"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_description" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

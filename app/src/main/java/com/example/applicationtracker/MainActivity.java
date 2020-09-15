@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private ApplicationAdapter mAdapter;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db =FirebaseFirestore.getInstance();
-    private CollectionReference applicationCollectionReference = db.collection("applications");
+    private String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    private CollectionReference applicationCollectionReference = db.collection("users").document(userID).collection("applications");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
