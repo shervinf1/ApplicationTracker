@@ -1,11 +1,16 @@
 package com.example.applicationtracker;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<ApplicationPOJO> mArrayList = new ArrayList<>();
     private ApplicationAdapter mAdapter;
     private FirebaseAuth mAuth;
+    private SharedPreferences sp;
     private FirebaseFirestore db =FirebaseFirestore.getInstance();
     private String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
     private CollectionReference applicationCollectionReference = db.collection("users").document(userID).collection("applications");
@@ -32,12 +38,38 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sp = getSharedPreferences("logged", Context.MODE_PRIVATE);
         mAuth = FirebaseAuth.getInstance();
+        toolbarSetup();
         fabSetup();
     }
 
-
-
+    private void toolbarSetup(){
+        Toolbar mToolbar = findViewById(R.id.mainActivityToolbar);
+        mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertSignout();
+            }
+        });
+    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu){
+//        getMenuInflater().inflate(R.menu.main_activity_menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item){
+//        switch(item.getItemId()){
+//            case R.id.logout:   //this item has your app icon
+//                Toast.makeText(this,"Logged Out",Toast.LENGTH_SHORT).show();
+//                return true;
+//            default: return super.onOptionsItemSelected(item);
+//        }
+//    }
 
 
 
@@ -109,6 +141,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    private void alertSignout() {
+        AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(MainActivity.this);
+        // Setting Dialog Title
+        alertDialog2.setTitle("Confirm Sign Out");
+        // Setting Dialog Message
+        alertDialog2.setMessage("Are you sure you want to Sign out?");
+        // Setting Positive "Yes" Btn
+        alertDialog2.setPositiveButton("YES",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseAuth.getInstance().signOut();
+                        sp.edit().putBoolean("logged",false).apply();
+                        Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(i);
+                    }
+                });
+        // Setting Negative "NO" Btn
+        alertDialog2.setNegativeButton("NO",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        // Showing Alert Dialog
+        alertDialog2.show();
+    }
 
 
 

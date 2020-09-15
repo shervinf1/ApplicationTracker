@@ -8,7 +8,7 @@
     tools:context=".ViewSelectedApplication">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/viewSelectedApplicationToolbar"
+        android:id="@+id/mainActivityToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
@@ -42,7 +42,7 @@
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewSelectedApplicationToolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/mainActivityToolbar" />
 
     <TextView
         android:id="@+id/selectedJobNameTextView"

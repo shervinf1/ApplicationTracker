@@ -2,9 +2,6 @@ package com.example.applicationtracker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,6 +25,7 @@ public class NewApplicationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_application);
+        toolbarSetup();
 
         editTextCompanyName = findViewById(R.id.edit_text_company_name);
         editTextJobName = findViewById(R.id.edit_text_job_name);
@@ -35,23 +33,6 @@ public class NewApplicationActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.new_application_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.save_note:
-                saveNewApplication();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     private void saveNewApplication() {
         String companyName = editTextCompanyName.getText().toString();

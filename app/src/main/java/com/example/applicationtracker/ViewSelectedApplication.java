@@ -35,7 +35,7 @@ public class ViewSelectedApplication extends AppCompatActivity {
 
     //Method that displays back button in toolbar and ends this activity when button is clicked.
     public void toolbarSetup() {
-        Toolbar mToolbar = findViewById(R.id.viewSelectedApplicationToolbar);
+        Toolbar mToolbar = findViewById(R.id.mainActivityToolbar);
         TextView mToolbarTextView = findViewById(R.id.viewSelectedApplicationTextView);
         mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
